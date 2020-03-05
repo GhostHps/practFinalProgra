@@ -1,3 +1,5 @@
+package serviceCenter;
+
 import java.util.Scanner;
 
 public class Car extends Vehicle {
@@ -6,6 +8,10 @@ public class Car extends Vehicle {
     Car(String matricle, String brand, double mileage, int passengers) {
         super(matricle, brand, mileage);
         this.passengers = passengers;
+    }
+
+    Car(){
+
     }
 
     public int getPassengers() {
@@ -23,7 +29,7 @@ public class Car extends Vehicle {
     }
 
     @Override
-    public Vehicle generateVehicle() {
+    public Car generateVehicle() {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("Ingresa la matricula.");
         this.setMatricle(theScanner.nextLine());
@@ -37,6 +43,7 @@ public class Car extends Vehicle {
         System.out.println("Ingresa el número máximo de pasajeros.");
         this.setPassengers(theScanner.nextInt());
 
+        System.out.println();
         return this;
     }
 }

@@ -1,13 +1,15 @@
+package serviceCenter;
+
 import java.util.Scanner;
 
 public class ServiceCenter {
-    Vehicle vehicles[];
+    private Vehicle vehicles[];
 
     ServiceCenter(int howLong) {
         vehicles = new Vehicle[howLong];
     }
 
-    public boolean getIn(Vehicle toGetIn) {
+    protected boolean getIn(Vehicle toGetIn) {
         boolean isGeted = false;
         for (int i = 0; i < vehicles.length; i++) {
             if (vehicles[i] != null) {
@@ -24,7 +26,7 @@ public class ServiceCenter {
         return isGeted;
     }
 
-    public boolean getOut(Vehicle toGetOut) {
+    protected boolean getOut(Vehicle toGetOut) {
         boolean isGeted = false;
 
         for (int i = 0; i < vehicles.length; i++) {
@@ -36,7 +38,7 @@ public class ServiceCenter {
         return isGeted;
     }
 
-    public void printGeneralServiceStatus() {
+    protected void printGeneralServiceStatus() {
         int countV = 0;
         for (int i = 0; i < vehicles.length; i++) {
             if (vehicles[i] != null) {
@@ -50,10 +52,8 @@ public class ServiceCenter {
         System.out.println("Número de vehiculos verificados: " + countV);
     }
 
-    public void searchVehicle(){
-        System.out.println("Ingresa el id del vehiculo a buscar.");
+    protected void searchVehicle(int toSearch) {
         Scanner theScanner = new Scanner(System.in);
-        int toSearch = theScanner.nextInt();
 
         for (Vehicle vehicle : vehicles) {
             if (vehicle.getId() == toSearch) {
@@ -70,5 +70,32 @@ public class ServiceCenter {
                 }
             }
         }
+    }
+
+    protected boolean getType() {
+        System.out.println("¿Quieres ingresar un carro?");
+        System.out.println("Y/N\n");
+        System.out.println("De responder negativo, se tomará como respuesta que quieres ingresar una moto.");
+
+        Scanner theScanner = new Scanner(System.in);
+        String election = theScanner.nextLine();
+        boolean toReturn;
+        if (election.equals("y")) {
+            toReturn = true;
+        } else {
+            toReturn = false;
+        }
+
+        return toReturn;
+    }
+
+    protected Vehicle getVehicle(int id) {
+        Vehicle toReturn = null;
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getId() == id) {
+                toReturn = vehicle;
+            }
+        }
+        return toReturn;
     }
 }

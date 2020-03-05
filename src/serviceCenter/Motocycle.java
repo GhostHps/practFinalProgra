@@ -1,3 +1,5 @@
+package serviceCenter;
+
 import java.util.Scanner;
 
 public class Motocycle extends Vehicle {
@@ -7,6 +9,9 @@ public class Motocycle extends Vehicle {
     Motocycle(String matricle, String brand, double mileage, double displacement) {
         super(matricle, brand, mileage);
         this.displacement = displacement;
+    }
+
+    Motocycle() {
     }
 
     public double getDisplacement() {
@@ -24,7 +29,7 @@ public class Motocycle extends Vehicle {
     }
 
     @Override
-    public Vehicle generateVehicle() {
+    public Motocycle generateVehicle() {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("Ingresa la matricula.");
         this.setMatricle(theScanner.nextLine());

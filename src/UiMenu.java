@@ -1,3 +1,5 @@
+import serviceCenter.MainSC;
+
 import java.util.Scanner;
 
 public class UiMenu {
@@ -13,10 +15,10 @@ public class UiMenu {
 //                    "5- Estadio\n" +
 //                    "6- Viñedo con objetos\n" +
 //                    "7- Estadio con objetos\n" +
-//                    "8- Centro de Servicio Automotriz\n" +
+                    "8- Centro de Servicio Automotriz\n" +
 //                    "9- Relación composición\n" +
 //                    "10- Documentación\n" +
-                    "11-  Salir\n"
+                            "11-  Salir\n"
             );
 
             switch (election) {
@@ -35,6 +37,7 @@ public class UiMenu {
                 case 7:
                     break;
                 case 8:
+                    MainSC.menu();
                     break;
                 case 9:
                     break;

@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package serviceCenter;
 
 public abstract class Vehicle {
     private int id;
