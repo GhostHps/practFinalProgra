@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ServiceCenter {
     Vehicle vehicles[];
 
@@ -35,34 +37,38 @@ public class ServiceCenter {
     }
 
     public void printGeneralServiceStatus() {
-        //Usar polimorfismo donde preparemos el string a imprimir con los datos de cada objeto.
-
-
         int countV = 0;
         for (int i = 0; i < vehicles.length; i++) {
             if (vehicles[i] != null) {
-                String isV = "";
                 if (vehicles[i].isVerificated()) {
-                    isV = "verificado";
                     countV++;
-                } else {
-                    isV = " sin verificar.";
                 }
 
-                System.out.println("Matricula: " + vehicles[i].getMatricle());
-                System.out.println("Marca: " + vehicles[i].getBrand());
-                System.out.println("Kilometrage: " + vehicles[i].getMileage());
-                System.out.println("Estado de verificación: " + isV);
-
-                if (vehicles[i] instanceof Car) {
-                    Car aCar = (Car) vehicles[i];
-                    System.out.println("Número de asientos: " + aCar.getPassengers());
-                } else {
-                    Motocycle aMotocycle = (Motocycle) vehicles[i];
-                    System.out.println("Cilindrada: " + aMotocycle.getDisplacement());
-                }
+                System.out.println(vehicles[i].printInformation());
             }
         }
         System.out.println("Número de vehiculos verificados: " + countV);
+    }
+
+    public void searchVehicle(){
+        System.out.println("Ingresa el id del vehiculo a buscar.");
+        Scanner theScanner = new Scanner(System.in);
+        int toSearch = theScanner.nextInt();
+
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getId() == toSearch) {
+                vehicle.printInformation();
+
+                System.out.println("\n¿Desea borrar sacar el vehiculo del servicio? y/n");
+                String election = theScanner.nextLine();
+                if (election.equals("y")) {
+                    try {
+                        getOut(vehicle);
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e);
+                    }
+                }
+            }
+        }
     }
 }

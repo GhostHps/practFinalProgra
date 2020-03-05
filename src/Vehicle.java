@@ -1,13 +1,34 @@
+import java.util.Scanner;
+
 public abstract class Vehicle {
-    String matricle;
-    String brand;
-    double mileage;
-    boolean pollutionVerification;
+    private int id;
+    private static int count = 1;
+    private String matricle;
+    private String brand;
+    private double mileage;
+    private boolean pollutionVerification;
 
     Vehicle(String matricle, String brand, double mileage) {
         this.matricle = matricle;
         this.brand = brand;
         this.mileage = mileage;
+        this.setId(count);
+        count++;
+    }
+
+    Vehicle() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public void setMatricle(String matricle) {
@@ -52,5 +73,17 @@ public abstract class Vehicle {
 
     public boolean isVerificated() {
         return pollutionVerification;
+    }
+
+    public String printInformation() {
+        return "ID: " + this.getId() +
+                "\nMatricula: " + this.getMatricle() +
+                "\nMarca: " + this.getBrand() +
+                "\nKilometrage: " + this.getMileage() +
+                "\nEstado de verificación: " + this.isVerificated();
+    }
+
+    public Vehicle generateVehicle() {
+        return null;
     }
 }
