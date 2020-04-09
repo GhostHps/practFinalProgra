@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainFR {
-    public AirPlane aPlane = new AirPlane();
-    public ArrayList<Passenger> passengers = new ArrayList<>();
+    public static AirPlane aPlane = new AirPlane();
+    public static ArrayList<Passenger> passengers = new ArrayList<>();
 
-    public void menu() {
+    public static void menu() {
         String election = "";
         do {
             System.out.println("¿Asignar silla a pasajero?");
@@ -21,28 +21,28 @@ public class MainFR {
                 passengers.add(aPassenger);
 
                 boolean doit = false;
-                String error = "";
 
                 if (aPassenger.isPreferClass()) {
                     for (int i = 0; i < aPlane.executiveSeats.length; i++) {
                         if (aPlane.executiveSeats[i].getPassenger() == null && aPlane.executiveSeats[i].getPosition() == aPassenger.getPreferredSeat()) {
                             aPlane.executiveSeats[i].setPassenger(aPassenger);
-                            System.out.println("Asiento no. " + aPlane.executiveSeats[i].getId() + " asignado.");
+                            System.out.println("Asiento ejecutivo no. " + aPlane.executiveSeats[i].getId() + " asignado.");
+                            doit = true;
                             break;
-                        }else {
-                            System.out.println("No hemos encontrado un asiento adecuado para el cliente.");
                         }
                     }
-                }else {
+                } else {
                     for (int i = 0; i < aPlane.economicSeats.length; i++) {
                         if (aPlane.economicSeats[i].getPassenger() == null && aPlane.economicSeats[i].getPosition() == aPassenger.getPreferredSeat()) {
                             aPlane.economicSeats[i].setPassenger(aPassenger);
                             System.out.println("Asiento no. " + aPlane.economicSeats[i].getId() + " asignado.");
+                            doit = true;
                             break;
-                        }else {
-                            System.out.println("No hemos encontrado un asiento adecuado para el cliente.");
                         }
                     }
+                }
+                if (!doit) {
+                    System.out.println("No hemos encontrado un asiento adecuado para el cliente, lo lamentamos.");
                 }
             }
 
