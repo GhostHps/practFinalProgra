@@ -12,6 +12,7 @@ public class UiMenu {
         Scanner theScanner = new Scanner(System.in);
         int election = 0;
         do {
+            Tools.padding();
             System.out.println("1.- Calificaciones");
             System.out.println("2.- Serie");
             System.out.println("3.- Perfectos");
