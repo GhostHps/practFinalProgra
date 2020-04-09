@@ -27,5 +27,7 @@ public class Perfects {
         } else {
             System.err.println("No es un número perfecto.");
         }
+
+        return false;
     }
 }

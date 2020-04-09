@@ -33,7 +33,8 @@ public class UiMenu {
                     Sequence.show();
                     break;
                 case 3:
-                    Perfects.show();
+                    Perfects perfects = new Perfects();
+                    perfects.show();
                     break;
                 case 4:
                     Vineyard.show();

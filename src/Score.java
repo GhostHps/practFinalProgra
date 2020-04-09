@@ -3,76 +3,75 @@ import java.util.Scanner;
 public class Score {
     public static void show() {
         String election = "";
+
         do {
-            System.out.println("¿Iniciar? y/n");
-            Scanner aScanner = new Scanner(System.in);
-            election = aScanner.nextLine();
-
-            int howManySubjects = 0;
-
-
-            System.out.println("Sistema de calificaciones.");
-            System.out.println("¿Cuántas materias hay?");
-
             Scanner theScanner = new Scanner(System.in);
-            howManySubjects = theScanner.nextInt();
+            Scanner theScannerNames = new Scanner(System.in);
 
-            for (int i = 1; i <= howManySubjects; i++) {
-                int count = 0;
-                int howManyStudents = 0;
-                int doit = 0;
-                int dont = 0;
+            System.out.println("Cuantos alumnos hay?");
+            int howMuchStudents = theScanner.nextInt();
+
+            System.out.println("¿Cuantas materias hay?");
+            int howMuchSubjects = theScanner.nextInt();
+
+            double averagesForAsignature[] = new double[howMuchSubjects];
+            int howMuchIsNotPresent[] = new int[howMuchSubjects];
+            String names[] = new String[howMuchStudents];
+            float calf[][] = new float[howMuchStudents][howMuchSubjects];
+
+            for (int i = 0; i < howMuchStudents; i++) {
+                System.out.println("\n¿Como se llama el estudiante?");
+                names[i] = theScannerNames.nextLine();
+
+                for (int it = 0; it < howMuchSubjects; it++) {
+                    System.out.println("¿Cuanto sacó " + names[i] + " en la materia numero " + (it + 1) + "?");
+                    System.out.println("Si no pertenece a esta materia, o no se presentó, ingresa -1");
+                    calf[i][it] = theScanner.nextFloat();
+
+                }
+            }
+
+
+            for (int i = 0; i < howMuchSubjects; i++) {
+                howMuchIsNotPresent[i] = 0;
+                int howMuchPresent = 0;
+                int sum = 0;
+                int NA = 0;
+                int SA = 0;
                 int DE = 0;
                 int AU = 0;
-                String subject1;
-                float sum = 0;
-                float subject;
-                float average;
 
-                System.out.println(i + ".- Ingresa el nombre de la materia ");
-                Scanner theScannerSubject = new Scanner(System.in);
-                subject1 = theScannerSubject.nextLine();
-
-                System.out.println("¿Cuántos alumnos están inscritos en " + subject1 + "?");
-                Scanner theScannerHow = new Scanner(System.in);
-                howManyStudents = theScannerHow.nextInt();
-                for (int it = 1; it <= howManyStudents; it++) {
-
-                    System.out.println("Ingresa la calificación del alumno no. " + it + ".");
-                    System.out.println("Si el alumno no está inscrito en esta asignatura o no se presento al examen ingrese -1");
-                    subject = theScannerHow.nextInt();
-
-                    if (subject != -1) {
-                        count += 1;
-                        sum = sum + subject;
-                    }
-
-                    if (subject <= 8 && subject >= 1) {
-                        dont += 1;
-                    }
-
-                    if (subject >= 8) {
-                        doit += 1;
-                    }
-
-                    if (subject == 9 || subject == 9.9) {
-                        DE += 1;
-                    }
-
-                    if (subject == 10) {
-                        AU += 1;
+                for (int it = 0; it < howMuchStudents; it++) {
+                    if (calf[it][i] == -1) {
+                        howMuchIsNotPresent[i]++;
+                    } else {
+                        if (calf[it][i] < 8) {
+                            NA++;
+                        } else if (calf[it][i] == 8) {
+                            SA++;
+                        } else if (calf[it][i] == 9) {
+                            DE++;
+                        } else {
+                            AU++;
+                        }
+                        sum += calf[it][i];
                     }
                 }
 
-                average = sum / count;
+                howMuchPresent = howMuchStudents - howMuchIsNotPresent[i];
+                averagesForAsignature[i] = sum / (float) howMuchPresent;
 
-                System.out.println("Hay " + count + " alumnos en " + subject1);
-                System.out.println("El promedio de " + subject1 + " es de " + average);
-                System.out.println("Alumnos reprobados: " + dont);
-                System.out.println("Alumnos aprobados: " + doit);
-                System.out.println("Cantidad de DE's: " + DE);
-                System.out.println("Cantidad de Au's: " + AU);
+                Tools.padding();
+                System.out.println("En la materia numero " + i + ", asístieron " + howMuchPresent + " alumnos.");
+                System.out.println("Promedio de la materia: " + averagesForAsignature[i]);
+                System.out.println("NA's: " + NA);
+                System.out.println("SA's: " + SA);
+                System.out.println("DE's: " + DE);
+                System.out.println("AU's: " + AU);
             }
+
+            System.out.println("¿Iniciar de nuevo? y/n");
+            election = theScanner.nextLine();
         } while (election.equals("y"));
     }
 }
