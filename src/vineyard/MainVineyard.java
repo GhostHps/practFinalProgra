@@ -2,16 +2,13 @@ package vineyard;
 
 import java.util.Scanner;
 
+
+/**
+ * TENGO QUE REVISAR BIEN ESTE CODIGO
+ */
 public class MainVineyard {
     Vineyard vineyard[] = new Vineyard[5];
     int time = 0;
-    int id;
-    static int it = 1;
-    int aux = 1;
-    int aux2 = 0;
-    int maxYear = 0;
-    int lessType3 = 0;
-    int year;
 
 
     public void show() {
@@ -26,8 +23,8 @@ public class MainVineyard {
         }
 
         int add = 0;
-        for (int i = 0; i < vineyard.length; i++) {
-            add += vineyard[i].year;
+        for (Vineyard value : vineyard) {
+            add += value.year;
         }
 
         for (int i = 0; i < vineyard.length; i++) {
