@@ -7,6 +7,9 @@ import vineyard.MainVineyard;
 import javax.swing.*;
 import java.util.Scanner;
 
+import static serviceCenter.Toolsc.ANSI_GREEN;
+import static serviceCenter.Toolsc.ANSI_RESET;
+
 public class UiMenu {
     public static void menu() {
         Scanner theScanner = new Scanner(System.in);
@@ -21,8 +24,8 @@ public class UiMenu {
             System.out.println("6.- Viñedo POO");
             System.out.println("7.- Aviones");
             System.out.println("8.- Centro de servicio automotriz");
-//            System.out.println("9.- Relación de composición");
-//            System.out.println("10.- Documentacion");
+            System.out.println("9.- Relación de composición");
+            System.out.println("10.- Documentacion");
             System.out.println("11.- Salir");
 
             election = theScanner.nextInt();
@@ -47,14 +50,25 @@ public class UiMenu {
                     vineyard.show();
                     break;
                 case 7:
-                    MainFR.menu();
+                    MainFR mainFR = new MainFR();
+                    mainFR.menu();
                     break;
                 case 8:
-                    MainSC.menu();
+                    MainSC mainSC = new MainSC();
+                    mainSC.menu();
                     break;
                 case 9:
+                    Tools.printTitle("Relación de composición");
+                    System.out.println("En esta parte del codigo, se presenta la composición de relación.");
+                    System.out.println("El proyecto, desde un inicio estuvo diseñado para implementar este concepto, así que solo se mostrará otra iteración del pnuto 7");
+                    System.out.println(Tools.ANSI_YELLOW + "\nPresione una tecla para continuar" + ANSI_RESET);
+                    Tools.getString("una tecla");
+
+                    MainFR compositionRelation = new MainFR();
+                    compositionRelation.menu();
                     break;
                 case 10:
+                    System.out.println(ANSI_GREEN + "Si, el proyecto está documentado." + ANSI_RESET);
                     break;
             }
         } while (election != 11);

@@ -1,3 +1,6 @@
+/**
+ * En el punto 2, pedimos un numero que será el maximo de una secuencia en la cual irá mostrando uno por uno en la secuencia, el numero en la iteración como dividendo de 1.
+ */
 public class Sequence {
     public static void show() {
         Tools.padding();

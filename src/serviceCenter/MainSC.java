@@ -3,14 +3,15 @@ package serviceCenter;
 import java.util.Scanner;
 
 public class MainSC {
-    public static void menu() {
+    public void menu() {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("¿Cuál será nuestra capacidad máxima en el taller?");
         int howManyVehicles = theScanner.nextInt();
         ServiceCenter SC = new ServiceCenter(howManyVehicles);
         int election = 0;
+
         do {
-            System.out.println("Bienvenido al servicio mecanico automotriz //Jama's//\n\n");
+            Toolsc.printTitle("Servicio automotriz Jama´s");
             System.out.println("1.- Ingresar vehículo al servicio.");
             System.out.println("2.- Retirar vehiculo del servicio.");
             System.out.println("3.- Reporte de vehiculos en servicio.");

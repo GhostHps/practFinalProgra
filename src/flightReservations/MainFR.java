@@ -3,11 +3,15 @@ package flightReservations;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Falta poner opcion del reporte de asientos.
+ */
+
 public class MainFR {
     public static AirPlane aPlane = new AirPlane();
     public static ArrayList<Passenger> passengers = new ArrayList<>();
 
-    public static void menu() {
+    public void menu() {
         String election = "";
         do {
             System.out.println("¿Asignar silla a pasajero?");

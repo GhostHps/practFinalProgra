@@ -5,8 +5,7 @@ public class Perfects {
         int number = 0;
 
         Scanner theSCanner = new Scanner(System.in);
-        System.out.println("Introduce un número: ");
-        number = theSCanner.nextInt();
+        number = Tools.getInt("un número");
 
         Tools.printTitle("Números perfectos desde 0 hasta " + number);
         for (int i = 0; i <= number; i++) {

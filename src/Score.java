@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+
+/**
+ * Clase del punto numero 1, el cual es un programa estructurado que pide materias y calificaciones por alumno y muestra promedios, etc.
+ */
 public class Score {
     public static void show() {
         String election = "";
@@ -19,6 +23,10 @@ public class Score {
             String names[] = new String[howMuchStudents];
             float calf[][] = new float[howMuchStudents][howMuchSubjects];
 
+
+            /**
+             * Aqui pedimos las califiaciones una por una.
+             */
             for (int i = 0; i < howMuchStudents; i++) {
                 System.out.println("\n¿Como se llama el estudiante?");
                 names[i] = theScannerNames.nextLine();
@@ -32,6 +40,9 @@ public class Score {
             }
 
 
+            /**
+             * Aqui calculamos el numero de NA, SA, DE, AU.
+             */
             for (int i = 0; i < howMuchSubjects; i++) {
                 howMuchIsNotPresent[i] = 0;
                 int howMuchPresent = 0;
@@ -58,9 +69,17 @@ public class Score {
                     }
                 }
 
+
+                /**
+                 * Promediamos
+                 */
                 howMuchPresent = howMuchStudents - howMuchIsNotPresent[i];
                 averagesForAsignature[i] = sum / (float) howMuchPresent;
 
+
+                /**
+                 * Mostramos la informacion obtenida
+                 */
                 Tools.padding();
                 System.out.println("En la materia numero " + i + ", asístieron " + howMuchPresent + " alumnos.");
                 System.out.println("Promedio de la materia: " + averagesForAsignature[i]);
