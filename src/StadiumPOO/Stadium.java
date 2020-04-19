@@ -3,6 +3,9 @@ package StadiumPOO;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase de estadio
+ */
 public class Stadium {
     private Locality ticketType[] = new Locality[5];
     private ArrayList<Tickets> sold = new ArrayList<>();
@@ -15,6 +18,9 @@ public class Stadium {
         }
     }
 
+    /**
+     * MEtodo que genera una nueva venta
+     */
     public void generateSale() {
         System.out.println("En que localidad venderás el boleto? ( 1 - 5)");
         Scanner theScanner = new Scanner(System.in);
@@ -25,6 +31,9 @@ public class Stadium {
 
     }
 
+    /**
+     * MEtodo que genera las localidades
+     */
     private void generateLocalitys() {
         for (int i = 0; i < ticketType.length; i++) {
             System.out.println("Ingresa el precio de la localidad " + (i + 1));
@@ -34,6 +43,7 @@ public class Stadium {
             System.out.println("Hecho");
         }
     }
+
 
     private Locality getLocality(int id) {
         Locality toReturn = null;
@@ -46,6 +56,9 @@ public class Stadium {
         return toReturn;
     }
 
+    /**
+     * Metodo que te imprime el reporte de ventas
+     */
     public void printReport() {
         float suma = 0;
         for (Tickets ticket : sold) {

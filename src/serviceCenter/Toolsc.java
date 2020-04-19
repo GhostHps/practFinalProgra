@@ -2,6 +2,9 @@ package serviceCenter;
 
 import java.util.Scanner;
 
+/**
+ * No se porque no me dejaba importar mi libreria que está un paquete arriba, así que copie la clase a este paquete ggg
+ */
 public class Toolsc {
 
     /**

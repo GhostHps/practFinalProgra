@@ -2,6 +2,9 @@ package serviceCenter;
 
 import java.util.Scanner;
 
+/**
+ * Metodo que maneja el menu del programa
+ */
 public class MainSC {
     public void menu() {
         Scanner theScanner = new Scanner(System.in);

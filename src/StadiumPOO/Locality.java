@@ -1,5 +1,8 @@
 package StadiumPOO;
 
+/**
+ * Pojo de la localidad
+ */
 public class Locality {
     private int id;
     private float price;

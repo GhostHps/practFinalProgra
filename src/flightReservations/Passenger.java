@@ -2,20 +2,30 @@ package flightReservations;
 
 import java.util.Scanner;
 
+/**
+ * Clase propia del objeto pasajeros
+ */
 public class Passenger {
     private int id;
     private static int it = 1;
     private String name;
     private String idCard;
     private int seatAssigned = 0;
-//    private String dateOfBirth;
 
-    //true = ejecutive; false = tourist
+    //    private String dateOfBirth;
+//true = ejecutive; false = tourist
+//true = ejecutive; false = tourist
     private int preferredSeat;
 
-    //true = ejecutive; false = tourist
     private boolean preferClass;
 
+    /**
+     * Constructor del pasajero
+     * @param name nombre del pasajero
+     * @param idCard cedula
+     * @param preferredSeat asiento preferido
+     * @param preferClass clase preferida
+     */
     public Passenger(String name, String idCard, int preferredSeat, boolean preferClass) {
         this.name = name;
         this.idCard = idCard;
@@ -25,11 +35,15 @@ public class Passenger {
         it++;
     }
 
-    public Passenger(){
+    public Passenger() {
         id = it;
         it++;
     }
 
+    /**
+     * Metodo que solicita los datos del pasagero
+     * @return el objeto generado
+     */
     public Passenger generate() {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("¿Cuál es el nombre del cliente?");

@@ -2,6 +2,9 @@ package StadiumPOO;
 
 import java.util.Scanner;
 
+/**
+ * clase principal del modulo
+ */
 public class MainS {
     public static void menu() {
         Stadium stadium = new Stadium();

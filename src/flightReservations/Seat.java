@@ -1,5 +1,8 @@
 package flightReservations;
 
+/**
+ * Clase propia de los asientos
+ */
 public abstract class Seat {
     private int id;
     private static int it = 1;
@@ -8,7 +11,7 @@ public abstract class Seat {
     private int position;
 
     public Seat(int position) {
-        this.position=position;
+        this.position = position;
         this.id = it;
         it++;
     }

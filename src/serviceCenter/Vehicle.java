@@ -1,5 +1,8 @@
 package serviceCenter;
 
+/**
+ * Clase abstracta propia de los vehiculos
+ */
 public abstract class Vehicle {
     private int id;
     private static int count = 1;
@@ -8,6 +11,14 @@ public abstract class Vehicle {
     private double mileage;
     private boolean pollutionVerification;
 
+
+    /**
+     * Constructor de vehiculos
+     *
+     * @param matricle matricula
+     * @param brand    marca
+     * @param mileage  kilometraje
+     */
     Vehicle(String matricle, String brand, double mileage) {
         this.matricle = matricle;
         this.brand = brand;
@@ -55,6 +66,11 @@ public abstract class Vehicle {
         return mileage;
     }
 
+    /**
+     * Clase que define el servicio que se le tiene que dar a los vehiculos
+     *
+     * @return Un string con el servicio requerido
+     */
     public String defineService() {
         String toReturn = "";
 
@@ -65,24 +81,46 @@ public abstract class Vehicle {
         } else if (mileage > 50000) {
             toReturn = "Cambio de llantas";
         } else {
-            toReturn = "";
+            toReturn = "ninguno";
         }
 
         return toReturn;
     }
 
+    /**
+     * Metodo que me dice si está veirificado, no se llama get, así que no cuenta:v
+     *
+     * @return si está o no verificado
+     */
     public boolean isVerificated() {
-        return pollutionVerification;
+        if (pollutionVerification) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    /**
+     * Metodo que imprime la informacion del vehiculo.
+     * Si, podría haber sido sobreescrito el toString, pero cuando hice este ejercicio no sabía bien eso xd
+     *
+     * @return string con los valores del vehiculo
+     */
     public String printInformation() {
         return "ID: " + this.getId() +
                 "\nMatricula: " + this.getMatricle() +
                 "\nMarca: " + this.getBrand() +
                 "\nKilometrage: " + this.getMileage() +
-                "\nEstado de verificación: " + this.isVerificated();
+                "\nEstado de verificación: " + this.pollutionVerification +
+                "\nServicio requerido: " + this.defineService();
     }
 
+    /**
+     * Metodo que genera un vehiculo nuevo
+     * Si se le invoca directamente desde la clase vehicle, regresa un objeto nulo, cosa que no debería de pasar porque es una clase abstracta
+     *
+     * @return el vehiculo generado
+     */
     public Vehicle generateVehicle() {
         return null;
     }

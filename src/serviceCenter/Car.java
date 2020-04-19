@@ -2,9 +2,19 @@ package serviceCenter;
 
 import java.util.Scanner;
 
+/**
+ * Clase de los carros
+ */
 public class Car extends Vehicle {
     private int passengers;
 
+    /**
+     * Constructor de los carros
+     * @param matricle matricula
+     * @param brand marca
+     * @param mileage kilometraje
+     * @param passengers numero maximo de pasajeros
+     */
     Car(String matricle, String brand, double mileage, int passengers) {
         super(matricle, brand, mileage);
         this.passengers = passengers;

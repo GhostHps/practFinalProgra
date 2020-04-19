@@ -1,5 +1,8 @@
 package flightReservations;
 
+/**
+ * Clase de los asientos ejecutivos
+ */
 public class Executive extends Seat {
     private static int it = 1;
 

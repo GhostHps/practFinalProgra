@@ -1,5 +1,9 @@
 package flightReservations;
 
+
+/**
+ * Clase de los asientos economicos
+ */
 public class Economic extends Seat {
     private static int it = 1;
 

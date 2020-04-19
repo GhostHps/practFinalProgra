@@ -1,5 +1,8 @@
 package StadiumPOO;
 
+/**
+ * Pojo de los boletos
+ */
 public class Tickets {
     private static int it = 1;
     private int id;

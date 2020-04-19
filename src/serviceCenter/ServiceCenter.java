@@ -1,10 +1,12 @@
 package serviceCenter;
 
-import javax.tools.Tool;
 import java.util.Scanner;
 
 import static serviceCenter.Toolsc.*;
 
+/**
+ * Metodo del centro de servicio
+ */
 public class ServiceCenter {
     private Vehicle vehicles[];
 
@@ -12,6 +14,11 @@ public class ServiceCenter {
         vehicles = new Vehicle[howLong];
     }
 
+    /**
+     * Metodo para agregar un nuevo auto al servicio
+     * @param toGetIn Un vehiculo
+     * @return un valor boleano que te confirma si si se pudo ingresar el vehiculo
+     */
     protected boolean getIn(Vehicle toGetIn) {
 
         for (int i = 0; i < vehicles.length; i++) {
@@ -34,6 +41,12 @@ public class ServiceCenter {
         return false;
     }
 
+
+    /**
+     * MEtodo para sacar un vehiculo del servicio
+     * @param toGetOut Vehiculo a sacar del servicio
+     * @return
+     */
     protected boolean getOut(Vehicle toGetOut) {
         boolean isGeted = false;
 
