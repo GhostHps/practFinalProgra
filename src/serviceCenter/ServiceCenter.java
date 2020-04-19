@@ -40,13 +40,13 @@ public class ServiceCenter {
 
     protected void printGeneralServiceStatus() {
         int countV = 0;
-        for (int i = 0; i < vehicles.length; i++) {
-            if (vehicles[i] != null) {
-                if (vehicles[i].isVerificated()) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle != null) {
+                if (vehicle.isVerificated()) {
                     countV++;
                 }
 
-                System.out.println(vehicles[i].printInformation());
+                System.out.println(vehicle.printInformation());
             }
         }
         System.out.println("Número de vehiculos verificados: " + countV);
@@ -74,17 +74,13 @@ public class ServiceCenter {
 
     protected boolean getType() {
         System.out.println("¿Quieres ingresar un carro?");
-        System.out.println("Y/N\n");
         System.out.println("De responder negativo, se tomará como respuesta que quieres ingresar una moto.");
+        System.out.println("Y/N\n");
 
         Scanner theScanner = new Scanner(System.in);
         String election = theScanner.nextLine();
         boolean toReturn;
-        if (election.equals("y")) {
-            toReturn = true;
-        } else {
-            toReturn = false;
-        }
+        toReturn = election.equals("y");
 
         return toReturn;
     }

@@ -10,7 +10,7 @@ public class Car extends Vehicle {
         this.passengers = passengers;
     }
 
-    Car(){
+    Car() {
 
     }
 
@@ -32,18 +32,18 @@ public class Car extends Vehicle {
     public Car generateVehicle() {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("Ingresa la matricula.");
-        this.setMatricle(theScanner.nextLine());
+        String matricle = theScanner.nextLine();
 
         System.out.println("Ingresa la Marca.");
-        this.setBrand(theScanner.nextLine());
+        String brand = theScanner.nextLine();
 
         System.out.println("Ingresa el kilometrage.");
-        this.setMileage(theScanner.nextDouble());
+        double mileage = theScanner.nextDouble();
 
         System.out.println("Ingresa el número máximo de pasajeros.");
-        this.setPassengers(theScanner.nextInt());
+        int passengers = theScanner.nextInt();
 
         System.out.println();
-        return this;
+        return new Car(matricle, brand, mileage, passengers);
     }
 }

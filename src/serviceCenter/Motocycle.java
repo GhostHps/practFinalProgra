@@ -1,7 +1,5 @@
 package serviceCenter;
 
-import java.util.Scanner;
-
 public class Motocycle extends Vehicle {
     //cilindrada
     private double displacement;
@@ -30,19 +28,11 @@ public class Motocycle extends Vehicle {
 
     @Override
     public Motocycle generateVehicle() {
-        Scanner theScanner = new Scanner(System.in);
-        System.out.println("Ingresa la matricula.");
-        this.setMatricle(theScanner.nextLine());
+        String matricle = Toolsc.getString("matricula");
+        String brand = Toolsc.getString("marca");
+        float mileage = Toolsc.getFloat("kilometraje");
+        int displacement = Toolsc.getInt("cilindrada");
 
-        System.out.println("Ingresa la Marca.");
-        this.setBrand(theScanner.nextLine());
-
-        System.out.println("Ingresa el kilometrage.");
-        this.setMileage(theScanner.nextDouble());
-
-        System.out.println("Ingresa el número de la cilindrada.");
-        this.setDisplacement(theScanner.nextInt());
-
-        return this;
+        return new Motocycle(matricle, brand, mileage, displacement);
     }
 }
