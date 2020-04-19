@@ -7,6 +7,7 @@ public class MainSC {
         Scanner theScanner = new Scanner(System.in);
         System.out.println("¿Cuál será nuestra capacidad máxima en el taller?");
         int howManyVehicles = theScanner.nextInt();
+
         ServiceCenter SC = new ServiceCenter(howManyVehicles);
         int election = 0;
 
@@ -25,11 +26,16 @@ public class MainSC {
                     if (SC.getType()) {
                         Car aCar = new Car();
                         aCar = aCar.generateVehicle();
-                        SC.getIn(aCar);
+
+                        if (!SC.getIn(aCar)) {
+                            System.out.println("Por el momento no tenemos oportunidad de atenderlo. Vuelva pronto.");
+                        }
                     } else {
                         Motocycle aMoto = new Motocycle();
                         aMoto = aMoto.generateVehicle();
-                        SC.getIn(aMoto);
+                        if (!SC.getIn(aMoto)) {
+                            System.out.println("Por el momento no tenemos oportunidad de atenderlo. Vuelva pronto.");
+                        }
                     }
                     break;
                 case 2:
@@ -45,9 +51,7 @@ public class MainSC {
                     SC.printGeneralServiceStatus();
                     break;
                 case 4:
-                    System.out.println("Ingresa el id del vehiculo a buscar.");
-                    int idToSearch = theScanner.nextInt();
-                    SC.searchVehicle(idToSearch);
+                    SC.searchVehicle(Toolsc.getInt("id del vehiculo"));
 
             }
         } while (election != 0);

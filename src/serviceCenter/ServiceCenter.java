@@ -1,6 +1,9 @@
 package serviceCenter;
 
+import javax.tools.Tool;
 import java.util.Scanner;
+
+import static serviceCenter.Toolsc.*;
 
 public class ServiceCenter {
     private Vehicle vehicles[];
@@ -10,20 +13,25 @@ public class ServiceCenter {
     }
 
     protected boolean getIn(Vehicle toGetIn) {
-        boolean isGeted = false;
+
         for (int i = 0; i < vehicles.length; i++) {
-            if (vehicles[i] != null) {
+            if (vehicles[i] == null) {
                 vehicles[i] = toGetIn;
-                isGeted = true;
-                System.out.println("Gracias por confiar en nosotros. :)");
+
+                try {
+                    System.out.println(vehicles[i].printInformation());
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                System.out.println(ANSI_GREEN + "Gracias por confiar en nosotros. :)" + ANSI_RESET);
+                Toolsc.padding();
+
+                Toolsc.padding();
+                return true;
             }
-        }
 
-        if (!isGeted) {
-            System.out.println("Por el momento no tenemos oportunidad de atenderlo. Vuelva pronto.");
         }
-
-        return isGeted;
+        return false;
     }
 
     protected boolean getOut(Vehicle toGetOut) {
@@ -47,28 +55,17 @@ public class ServiceCenter {
                 }
 
                 System.out.println(vehicle.printInformation());
+                Toolsc.padding();
             }
         }
         System.out.println("Número de vehiculos verificados: " + countV);
     }
 
     protected void searchVehicle(int toSearch) {
-        Scanner theScanner = new Scanner(System.in);
-
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle.getId() == toSearch) {
-                vehicle.printInformation();
-
-                System.out.println("\n¿Desea borrar sacar el vehiculo del servicio? y/n");
-                String election = theScanner.nextLine();
-                if (election.equals("y")) {
-                    try {
-                        getOut(vehicle);
-                    } catch (Exception e) {
-                        System.out.println("Error: " + e);
-                    }
-                }
-            }
+        try {
+            System.out.println(vehicles[toSearch - 1].printInformation());
+        } catch (Exception e) {
+            System.out.println(ANSI_RED + "No hemos encontrado el vehiculo.\n" + e + ANSI_RESET);
         }
     }
 
